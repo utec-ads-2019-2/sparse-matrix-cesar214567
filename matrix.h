@@ -46,7 +46,7 @@ public:
                 //cout<<rootx[0].next->posx<<" "<<rootx[0].next->posy<<endl;
                 //cout<<tempx->next->posy<<endl;
                 if(tempx->next->posy==y){
-                    cout<<"GOT HERE4"<<endl;
+                    //cout<<"GOT HERE4"<<endl;
                     temporal=tempx->next; 
                     tempx->next=temporal->next;
                 }else{
@@ -90,7 +90,7 @@ public:
                     it2=it1->down;
                 }
                 if (it2==nullptr){
-                    cout<<"LLEGO AL ULTIMO Y NO ENCONTRO"<<endl;
+                    //cout<<"LLEGO AL ULTIMO Y NO ENCONTRO"<<endl;
                     return;
                 }
                 if (it2->posx==x){
@@ -155,11 +155,11 @@ public:
                     }
                 }
             }
-            cout<<"passed"<<endl;
+            //cout<<"passed"<<endl;
             if (tempy->next==nullptr){
                 tempy->next=temporal;
                 cout<<tempy->next->posx<<" "<<y<<endl; 
-                cout<<"FIRST THING IN THIS COLUMN "<<y<<endl;
+                //cout<<"FIRST THING IN THIS COLUMN "<<y<<endl;
                 return;
             }else{
                 //check if the first y value is higher or equal than the thing we wanna put
@@ -184,8 +184,8 @@ public:
                         }//go to the position
                         if (iterador2==nullptr){
                             iterador1->down=temporal;
-                            cout<<"se inserto nodo debajo del nodo con x y"<<iterador1->posx<<" "<<iterador1->posy<<endl;
-                            cout<<"el nodo insertado tiene valor x y"<<temporal->posx<<" "<<temporal->posy<<endl;
+                            //cout<<"se inserto nodo debajo del nodo con x y"<<iterador1->posx<<" "<<iterador1->posy<<endl;
+                            //cout<<"el nodo insertado tiene valor x y"<<temporal->posx<<" "<<temporal->posy<<endl;
                             temporal=iterador1->down;
                         }else{
                             if (iterador2->posx==x){
@@ -257,11 +257,11 @@ public:
         Matrix<T> nuevo(rootx.size(),rooty.size());
         for (int i=0;i<rootx.size();i++){
             for (int j=0;j<rooty.size();j++){
-                nuevo.set(i,j,this->operator()(i,j)*2);
+                nuevo.set(i,j,this->operator()(i,j)*scalar);
             }
         }
         nuevo.print();
-
+        return nuevo; 
     }
     
     
@@ -307,8 +307,8 @@ public:
                     nuevo.set(i,j,this->operator()(i,j)+other(i,j));
                 }
             }
-        nuevo.print();
-            
+            nuevo.print();
+            return nuevo;
         }
     }
     Matrix<T> operator-(Matrix<T> other){
@@ -322,7 +322,7 @@ public:
                 }
             }
         nuevo.print();
-            
+            return nuevo;
         }
     }
     void transpose(){
@@ -362,7 +362,6 @@ public:
     void print(){
         int contador2=0;
         for (auto it:rootx){
-            cout<<"revisando fila "<<contador2<<endl;
             auto temporal=it.next;
             if (temporal==nullptr){
                 //cout<<"LOOOOP2"<<endl;
@@ -394,7 +393,10 @@ public:
         
     }
 
-    //~Matrix();
+    ~Matrix(){
+        clear();
+    }
+
 };
 
 #endif //SPARSE_MATRIX_MATRIX_H

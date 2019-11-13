@@ -158,7 +158,6 @@ public:
             //cout<<"passed"<<endl;
             if (tempy->next==nullptr){
                 tempy->next=temporal;
-                cout<<tempy->next->posx<<" "<<y<<endl; 
                 //cout<<"FIRST THING IN THIS COLUMN "<<y<<endl;
                 return;
             }else{

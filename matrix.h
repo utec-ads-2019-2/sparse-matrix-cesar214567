@@ -24,7 +24,7 @@ public:
     unsigned int get_columns(){ return rooty.size();}
     
 
-
+    // Tu código no está muy límpio, hay bastantes cosas que pudiste sacar a funciones privadas
     void set(unsigned x, unsigned y, T c){
 
         //what happend if you do out of range
@@ -264,7 +264,7 @@ public:
     }
     
     
-
+    // Al utilizar los operadores estás haciendo que tus operaciones sean más lentas
     Matrix<T> operator*(  Matrix<T> matriz2){
         Matrix<T> temp(this->rootx.size(),matriz2.rooty.size());
         if(this->rooty.size()== matriz2.rootx.size()) {
